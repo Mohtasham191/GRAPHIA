@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>91 Club - Color Trading Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations and elements Tailwind can't handle */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .color-wheel {
+            background: conic-gradient(
+                #ff0000, #ff8000, #ffff00, #80ff00, 
+                #00ff00, #00ff80, #00ffff, #0080ff, 
+                #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000
+            );
+        }
+        .blinking-cursor:after {
+            content: "|";
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Header/Navbar -->
+    <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full flex items-center justify-center">
+                    <span class="font-bold text-xl">91</span>
+                </div>
+                <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-300">91 CLUB</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-purple-300 transition">Home</a>
+                <a href="#" class="hover:text-purple-300 transition">Market</a>
+                <a href="#" class="hover:text-purple-300 transition">Trading</a>
+                <a href="#" class="hover:text-purple-300 transition">Leaderboard</a>
+                <a href="#" class="hover:text-purple-300 transition">FAQ</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-md transition">Login</button>
+                <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition">Register</button>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-gray-900/80 z-10"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80')] bg-cover bg-center opacity-30"></div>
+        
+        <div class="container mx-auto px-4 py-20 relative z-20">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-300">Color Trading <span class="blinking-cursor"></span></h1>
+                <p class="text-xl md:text-2xl mb-8 text-gray-300">Predict colors, win rewards, and join the most exciting trading platform</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition transform hover:scale-105">Start Trading Now</button>
+                    <button class="bg-gray-800 hover:bg-gray-700 px-8 py-4 rounded-lg text-lg font-semibold transition transform hover:scale-105">Watch Tutorial</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Section -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Live Trading Platform</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Panel - Color Wheel -->
+                <div class="bg-gray-900 rounded-xl p-6 shadow-xl">
+                    <div class="color-wheel w-full h-64 rounded-full mx-auto mb-6 flex items-center justify-center relative">
+                        <div class="absolute inset-0 rounded-full border-8 border-gray-800"></div>
+                        <div class="w-16 h-16 bg-gray-900 rounded-full border-4 border-white"></div>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-semibold mb-2">Next Round Starts In:</h3>
+                        <div class="text-3xl font-bold text-purple-400">00:12:34</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-700 rounded-lg p-4 text-center">
+                            <div class="text-sm text-gray-400">Current Pot</div>
+                            <div class="text-xl font-bold">₹12,45,789</div>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4 text-center">
+                            <div class="text-sm text-gray-400">Last Winner</div>
+                            <div class="text-xl font-bold">₹2,34,567</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <button class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 px-6 py-3 rounded-lg font-semibold transition">Join Now</button>
+                    </div>
+                </div>
+                
+                <!-- Middle Panel - Trading Area -->
+                <div class="bg-gray-900 rounded-xl p-6 shadow-xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-semibold">Place Your Bets</h3>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-400">Balance:</span>
+                            <span class="font-bold">₹5,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-red-600 hover:bg-red-700 rounded-lg p-4 text-center cursor-pointer transition transform hover:scale-105">
+                            <div class="text-2xl font-bold">Red</div>
+                            <div class="text-sm">1.98x</div>
+                        </div>
+                        <div class="bg-green-600 hover:bg-green-700 rounded-lg p-4 text-center cursor-pointer transition transform hover:scale-105">
+                            <div class="text-2xl font-bold">Green</div>
+                            <div class="text-sm">1.98x</div>
+                        </div>
+                        <div class="bg-blue-600 hover:bg-blue-700 rounded-lg p-4 text-center cursor-pointer transition transform hover:scale-105">
+                            <div class="text-2xl font-bold">Blue</div>
+                            <div class="text-sm">1.98x</div>
+                        </div>
+                        <div class="bg-yellow-500 hover:bg-yellow-600 rounded-lg p-4 text-center cursor-pointer transition transform hover:scale-105">
+                            <div class="text-2xl font-bold">Yellow</div>
+                            <div class="text-sm">1.98x</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm text-gray-400 mb-2">Bet Amount</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-400">₹</span>
+                            <input type="number" class="w-full bg-gray-700 rounded-lg py-3 pl-8 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Enter amount" value="100">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-5 gap-2 mb-6">
+                        <button class="bg-gray-700 hover:bg-gray-600 py-2 rounded transition">+10</button>
+                        <button class="bg-gray-700 hover:bg-gray-600 py-2 rounded transition">+50</button>
+                        <button class="bg-gray-700 hover:bg-gray-600 py-2 rounded transition">+100</button>
+                        <button class="bg-gray-700 hover:bg-gray-600 py-2 rounded transition">+500</button>
+                        <button class="bg-gray-700 hover:bg-gray-600 py-2 rounded transition">+1000</button>
+                    </div>
+                    
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 py-3 rounded-lg font-semibold transition transform hover:scale-[1.02]">Place Bet</button>
+                </div>
+                
+                <!-- Right Panel - Recent Results -->
+                <div class="bg-gray-900 rounded-xl p-6 shadow-xl">
+                    <h3 class="text-xl font-semibold mb-6">Recent Results</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-red-600"></div>
+                                <span>Red</span>
+                            </div>
+                            <div class="font-bold">1.98x</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-green-600"></div>
+                                <span>Green</span>
+                            </div>
+                            <div class="font-bold">1.98x</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-blue-600"></div>
+                                <span>Blue</span>
+                            </div>
+                            <div class="font-bold">1.98x</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-yellow-500"></div>
+                                <span>Yellow</span>
+                            </div>
+                            <div class="font-bold">1.98x</div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-3 bg-gray-800 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-red-600"></div>
+                                <span>Red</span>
+                            </div>
+                            <div class="font-bold">1.98x</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold mb-4">Statistics</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-800 rounded-lg p-3">
+                                <div class="text-sm text-gray-400">Total Bets</div>
+                                <div class="text-xl font-bold">12,456</div>
+                            </div>
+                            <div class="bg-gray-800 rounded-lg p-3">
+                                <div class="text-sm text-gray-400">Total Winners</div>
+                                <div class="text-xl font-bold">3,245</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose 91 Club?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-xl p-6 hover:shadow-lg hover:shadow-purple-500/20 transition">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Fast Payouts</h3>
+                    <p class="text-gray-400 text-center">Instant withdrawals processed within minutes. No waiting for your winnings.</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 hover:shadow-lg hover:shadow-blue-500/20 transition">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Secure Platform</h3>
+                    <p class="text-gray-400 text-center">Provably fair system with blockchain verification for transparent results.</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 hover:shadow-lg hover:shadow-green-500/20 transition">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-gift text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Daily Bonuses</h3>
+                    <p class="text-gray-400 text-center">Free bonuses and rewards for active traders to boost your balance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Traders Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">AK</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Amit Kumar</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">"I won ₹50,000 in just 3 days! The platform is so easy to use and withdrawals are instant. Best color trading site!"</p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">PS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Priya Sharma</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">"As a beginner, I was nervous but the tutorials helped me understand. Now I make consistent profits every week."</p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mr-4">
+                            <span class="text-lg font-bold">RS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Rahul Singh</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">"The customer support is amazing! Had an issue with my account and they resolved it within 10 minutes. Highly recommended!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-900 to-blue-900">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Trading?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Join thousands of traders winning daily on 91 Club. Sign up now and get a ₹100 bonus!</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white text-purple-900 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition transform hover:scale-105">Create Free Account</button>
+                <button class="bg-transparent border-2 border-white hover:bg-white/10 px-8 py-4 rounded-lg text-lg font-semibold transition transform hover:scale-105">Learn How to Play</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full flex items-center justify-center">
+                            <span class="font-bold text-xl">91</span>
+                        </div>
+                        <h3 class="text-xl font-bold">91 CLUB</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">The premier color trading platform with instant payouts and fair gameplay.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">How to Play</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Leaderboard</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Responsible Gaming</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">AML Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400"><i class="fas fa-envelope mr-2"></i> support@91club.com</li>
+                        <li class="flex items-center text-gray-400"><i class="fab fa-telegram mr-2"></i> @club91support</li>
+                        <li class="flex items-center text-gray-400"><i class="fas fa-phone-alt mr-2"></i> +91 9876543210</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-center text-gray-500">
+                <p>© 2023 91 Club. All rights reserved. | 18+ Only</p>
+                <p class="text-sm mt-2">This game involves risk and should be played responsibly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center shadow-lg hover:bg-purple-700 transition transform hover:scale-110">
+            <i class="fas fa-headset text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Color selection animation
+            const colorOptions = document.querySelectorAll('.grid.grid-cols-2.gap-4.mb-6 > div');
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    colorOptions.forEach(opt => opt.classList.remove('ring-2', 'ring-white'));
+                    this.classList.add('ring-2', 'ring-white');
+                });
+            });
+            
+            // Simulate countdown timer
+            function updateCountdown() {
+                const countdownElement = document.querySelector('.text-3xl.font-bold.text-purple-400');
+                if (countdownElement) {
+                    let time = countdownElement.textContent.split(':');
+                    let minutes = parseInt(time[1]);
+                    let seconds = parseInt(time[2]);
+                    
+                    seconds--;
+                    if (seconds < 0) {
+                        seconds = 59;
+                        minutes--;
+                    }
+                    
+                    if (minutes < 0) {
+                        minutes = 0;
+                        seconds = 0;
+                    }
+                    
+                    countdownElement.textContent = `00:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+            }
+            
+            setInterval(updateCountdown, 1000);
+            
+            // Mobile menu toggle (would need more complete implementation)
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            mobileMenuButton.addEventListener('click', function() {
+                alert('Mobile menu would open here in a complete implementation');
+            });
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=mohtasham786/mohtasham" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
